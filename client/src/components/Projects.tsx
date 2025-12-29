@@ -23,7 +23,7 @@ const ProjectsGrid = ({ category }: { category?: string }) => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/projects${category ? `?category=${category}` : ''}`)
+      .get(`${import.meta.env.API_URL}/api/projects${category ? `?category=${category}` : ''}`)
       .then(res => {
         setProjects(res.data);
         setLoading(false);

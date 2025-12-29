@@ -33,7 +33,7 @@ const Hero = () => {
   // Experience fetch (unchanged)
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/experience`)
+      .get(`${import.meta.env.API_URL}/api/experience`)
       .then((res) => {
         setExperiences(res.data);
         setLoading(false);
@@ -44,7 +44,7 @@ const Hero = () => {
   // 🔹 PROJECTS: First 2 from /api/projects
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/projects`)
+      .get(`${import.meta.env.API_URL}/api/projects`)
       .then((res) => {
         const allProjects: Project[] = res.data || [];
         setProjects(allProjects.slice(0, 2));
@@ -55,7 +55,7 @@ const Hero = () => {
   // 🔹 APIS: First 2 from /api/apis (EXACTLY like your Apis component)
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/api/apis`)
+      .get(`${import.meta.env.API_URL}/api/apis`)
       .then((res) => {
         const allApis: ApiType[] = res.data || [];
         console.log('Hero APIs:', res.data);

@@ -1,37 +1,3 @@
-// import { motion } from 'framer-motion';
-
-// const Footer = () => {
-//   return (
-//     <motion.footer
-//       initial={{ opacity: 0 }}
-//       whileInView={{ opacity: 1 }}
-//       viewport={{ once: true }}
-//       className="glass-card border-t border-white/20 py-12 px-6 mt-24"
-//     >
-//       <div className="max-w-7xl mx-auto text-center">
-//         <div className="text-3xl font-black bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-6">
-//           AKASH
-//         </div>
-//         <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-//           Full-Stack Developer & AI Engineer | Building the future, one line of code at a time.
-//         </p>
-//         <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500 mb-8">
-//           <a href="/projects" className="hover:text-white transition-colors">Projects</a>
-//           <a href="/experience" className="hover:text-white transition-colors">Experience</a>
-//           <a href="/apis" className="hover:text-white transition-colors">APIs</a>
-//           <a href="/contact" className="hover:text-white transition-colors">Contact</a>
-//         </div>
-//         <div className="text-xs text-gray-500">
-//           © 2025 Akash. Built with React, Node.js & ❤️.
-//         </div>
-//       </div>
-//     </motion.footer>
-//   );
-// };
-
-// export default Footer;
-
-
 import { motion } from 'framer-motion';
 
 const Footer = () => {
