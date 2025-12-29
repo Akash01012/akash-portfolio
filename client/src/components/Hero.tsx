@@ -58,7 +58,6 @@ const Hero = () => {
       .get(`${import.meta.env.VITE_API_URL}/api/apis`)
       .then((res) => {
         const allApis: ApiType[] = res.data || [];
-        console.log('Hero APIs:', res.data);
         setApis(allApis.slice(0, 2));
         setProjLoading(false);
       })
