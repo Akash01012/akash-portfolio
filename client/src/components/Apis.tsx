@@ -9,7 +9,7 @@ const Apis = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.API_URL}/api/apis`)
+    axios.get(`${import.meta.env.VITE_API_URL}/api/apis`)
       .then(res => {
         setApis(res.data);
         console.log(res.data);

@@ -11,9 +11,9 @@ const ProjectsShowcase = () => {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`${import.meta.env.API_URL}/api/projects?category=fullstack`),
-      axios.get(`${import.meta.env.API_URL}/api/projects?category=ai`),
-      axios.get(`${import.meta.env.API_URL}/api/projects?category=api`),
+      axios.get(`${import.meta.env.VITE_API_URL}/api/projects?category=fullstack`),
+      axios.get(`${import.meta.env.VITE_API_URL}/api/projects?category=ai`),
+      axios.get(`${import.meta.env.VITE_API_URL}/api/projects?category=api`),
     ]).then(([fs, aiRes, apiRes]) => {
       setFullstack((fs.data.data || fs.data || []).slice(0, 2));
       setAi((aiRes.data.data || aiRes.data || []).slice(0, 2));
