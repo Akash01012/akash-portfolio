@@ -33,7 +33,7 @@ const Hero = () => {
   // Experience fetch (unchanged)
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api/experience')
+      .get(`${import.meta.env.VITE_API_URL}/api/experience`)
       .then((res) => {
         setExperiences(res.data);
         setLoading(false);
@@ -44,7 +44,7 @@ const Hero = () => {
   // 🔹 PROJECTS: First 2 from /api/projects
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api/projects')
+      .get(`${import.meta.env.VITE_API_URL}/api/projects`)
       .then((res) => {
         const allProjects: Project[] = res.data || [];
         setProjects(allProjects.slice(0, 2));
@@ -55,7 +55,7 @@ const Hero = () => {
   // 🔹 APIS: First 2 from /api/apis (EXACTLY like your Apis component)
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api/apis')
+      .get(`${import.meta.env.VITE_API_URL}/api/apis`)
       .then((res) => {
         const allApis: ApiType[] = res.data || [];
         console.log('Hero APIs:', res.data);
@@ -84,7 +84,7 @@ const Hero = () => {
           </span>
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-50 leading-tight animate-slide-up delay-200">
-            Hi, I'm <span className="text-blue-400 block">Akash</span>
+            Hi, I'm <span className="text-blue-400 block">Akash Kumar</span>
             <span className="block text-2xl md:text-3xl text-slate-200 font-normal mt-2">
               Full-Stack &amp; Software Engineer
             </span>
@@ -136,7 +136,7 @@ const Hero = () => {
               </div>
 
               <div className="mt-5 text-center">
-                <h3 className="text-lg font-semibold text-white tracking-wide">Akash</h3>
+                <h3 className="text-lg font-semibold text-white tracking-wide">Akash Kumar</h3>
                 <p className="text-sm text-slate-400">Software Engineer</p>
               </div>
 
