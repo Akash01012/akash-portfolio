@@ -17,9 +17,13 @@ type Project = {
 
 type ApiType = {
   _id: string;
-  title: string;
-  description: string;
-  techStack: string[];
+  name: string;
+  title: string;        // mapped from name
+  description?: string;
+  endpoint?: string;
+  methods?: string[];
+  githubUrl?: string;
+  techStack: string[];  // default empty array
 };
 
 const Hero = () => {
@@ -52,12 +56,17 @@ const Hero = () => {
       .catch(() => {});
   }, []);
 
-  // 🔹 APIS: First 2 from /api/apis (EXACTLY like your Apis component)
+  // 🔹 APIS: First 2 from /api/apis (FIXED: map backend data to match JSX)
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/api/apis`)
       .then((res) => {
-        const allApis: ApiType[] = res.data || [];
+        const rawApis = res.data || [];
+        const allApis: ApiType[] = rawApis.map((api: any) => ({
+          ...api,
+          title: api.name,           // backend sends 'name', JSX expects 'title'
+          techStack: api.techStack || []  // provide empty array for slice()
+        }));
         setApis(allApis.slice(0, 2));
         setProjLoading(false);
       })

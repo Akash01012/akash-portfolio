@@ -27,5 +27,4 @@ export interface Api {
   endpoint: string;
   methods: string[];
   githubUrl: string;
-  liveUrl: string;
 }
