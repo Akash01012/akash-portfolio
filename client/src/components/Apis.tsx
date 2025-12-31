@@ -30,11 +30,11 @@ const Apis = () => {
             <div className="h-8 w-40 bg-slate-800/50 rounded-xl mx-auto mb-3 animate-pulse"></div>
             <div className="h-4 w-64 bg-slate-800/50 rounded-lg mx-auto"></div>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4">
             {[...Array(2)].map((_, i) => (
               <div
                 key={i}
-                className="bg-slate-900/70 backdrop-blur-md border border-slate-700/50 rounded-2xl p-6 h-72 animate-pulse"
+                className="bg-slate-900/70 backdrop-blur-md border border-slate-700/50 rounded-2xl p-6 h-72 animate-pulse max-w-md mx-auto"
               >
                 <div className="h-10 w-32 bg-slate-800/50 rounded-lg mb-3"></div>
                 <div className="h-4 w-3/4 bg-slate-800/50 rounded mb-4"></div>
@@ -65,13 +65,13 @@ const Apis = () => {
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-4">
           {apis.map((api) => (
             <div
               key={api._id}
               className="
-                w-full max-w-sm
-                rounded-2xl p-6
+                w-full max-w-lg mx-auto h-90
+                rounded-2xl p-4
                 bg-slate-900/80 backdrop-blur-xl
                 border border-slate-700/50 hover:border-blue-400/50
                 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20
@@ -124,7 +124,7 @@ const Apis = () => {
                   Endpoint
                 </div>
                 <div className="flex items-center gap-2">
-                  <code className="flex-1 text-sm font-mono text-slate-200 bg-slate-800/60 px-3 py-2 rounded-lg border border-slate-700/50 break-all">
+                  <code className="flex-1 text-sm font-mono text-blue-300 bg-cyan-500/10 px-3 py-2 rounded-lg border border-cyan-400/30 backdrop-blur-sm shadow-cyan-500/20 shadow-lg break-all hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all duration-200">
                     {api.endpoint}
                   </code>
                   <button
@@ -142,7 +142,7 @@ const Apis = () => {
                 {(api.methods || ["GET"]).map((m, i) => (
                   <span
                     key={i}
-                    className="px-3 py-1 text-xs font-semibold bg-slate-800/60 border border-slate-700/50 text-slate-300 rounded-lg hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-200"
+                    className="px-3 py-1 text-xs font-semibold bg-slate-800/60 border border-slate-700/50 text-cyan-300 rounded-lg hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-200"
                   >
                     {m}
                   </span>
