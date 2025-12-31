@@ -363,7 +363,7 @@ const Hero = () => {
         <div>
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-2xl md:text-3xl font-black text-slate-100 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              Live APIs
+              Live APIs & Extensions
             </h3>
             <Link
               to="/apis"

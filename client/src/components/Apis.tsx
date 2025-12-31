@@ -18,9 +18,14 @@ const Apis = () => {
       .catch(() => setLoading(false));
   }, []);
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-  };
+  const [copiedEndpoint, setCopiedEndpoint] = useState<string | null>(null);
+
+const copyToClipboard = (text: string) => {
+  navigator.clipboard.writeText(text);
+  setCopiedEndpoint(text);
+  setTimeout(() => setCopiedEndpoint(null), 1000); // Reset after 2s
+};
+
 
   if (loading) {
     return (
@@ -57,7 +62,7 @@ const Apis = () => {
         {/* Header */}
         <div className="text-center mb-14 animate-fade-in">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent mb-3">
-            Live APIs
+            Live APIs & Extensions
           </h2>
           <p className="text-base md:text-lg text-slate-400 leading-relaxed">
             Production-grade backend services with real-world use cases
@@ -128,12 +133,18 @@ const Apis = () => {
                     {api.endpoint}
                   </code>
                   <button
-                    onClick={() => copyToClipboard(api.endpoint || "")}
-                    className="p-2.5 bg-slate-800/70 hover:bg-blue-500/30 text-slate-300 hover:text-blue-400 rounded-lg border border-slate-700/50 hover:border-blue-500/50 transition-all duration-200"
-                    title="Copy endpoint"
-                  >
-                    <Copy size={14} />
-                  </button>
+  onClick={() => copyToClipboard(api.endpoint || "")}
+  className="p-2.5 bg-slate-800/70 hover:bg-blue-500/30 text-slate-300 hover:text-blue-400 rounded-lg border border-slate-700/50 hover:border-blue-500/50 transition-all duration-200 relative group"
+  title="Copy endpoint"
+>
+  {copiedEndpoint === api.endpoint ? (
+    <span className="text-xs font-small text-slate-400 absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-900/90 px-2 py-1 rounded-md backdrop-blur-sm border border-slate-400/30 whitespace-nowrap">
+      copied
+    </span>
+  ) : null}
+  <Copy size={16} />
+</button>
+
                 </div>
               </div>
 
