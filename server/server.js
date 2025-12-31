@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
-
+app.get('/ping', (req, res) => res.status(200).send('OK'));
 app.use('/api/projects',projectRoutes);
 app.use('/api/experience',experienceRoutes);
 app.use('/api/apis',apisRoutes);
