@@ -1,12 +1,12 @@
-import { Mail, Github, Linkedin, Twitter, ArrowRight } from 'lucide-react';
+import { Mail, Github, Linkedin, Instagram, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const socials = [
-    { icon: Github, label: 'GitHub', url: 'https://github.com/yourusername', color: 'slate' },
-    { icon: Linkedin, label: 'LinkedIn', url: 'https://linkedin.com/in/yourprofile', color: 'blue' },
-    { icon: Twitter, label: 'Twitter', url: 'https://twitter.com/yourhandle', color: 'sky' },
-    { icon: Mail, label: 'Email', url: 'mailto:hello@akash.dev', color: 'emerald' },
+    { icon: Github, label: 'GitHub', url: 'https://github.com/Akash01012', color: 'slate' },
+    { icon: Linkedin, label: 'LinkedIn', url: 'https://www.linkedin.com/in/akash-kumar-042495237/', color: 'blue' },
+    { icon: Mail, label: 'Email', url: 'mailto:akash639673@gmail.com', color: 'emerald' },
+    { icon: Instagram, label: 'Instagram', url: 'https://www.instagram.com/akashhh_1_1?igsh=OWthaWRuYnU2ejJn&utm_source=qr', color: 'pink' }
   ];
 
   return (
@@ -25,7 +25,7 @@ const Contact = () => {
             </p>
             
             <a
-              href="mailto:hello@akash.dev"
+              href="mailto:akash639673@gmail.com"
               className="inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-slate-900 font-bold text-lg rounded-2xl shadow-xl shadow-blue-500/40 hover:from-blue-400 hover:to-indigo-400 hover:shadow-blue-500/60 hover:-translate-y-2 transition-all duration-400 group-hover:scale-[1.02] active:scale-[0.98] border border-blue-500/50"
             >
               Say Hello
@@ -58,8 +58,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="space-y-1">
-                  <span className="text-sm font-bold text-slate-200 group-hover:text-slate-100 transition-colors">{label}</span>
-                  <span className="text-xs text-slate-500 group-hover:text-slate-400">Connect</span>
+                  <span className="text-xm font-bold text-slate-200 group-hover:text-slate-100 transition-colors">{label}</span>
                 </div>
               </a>
             ))}
