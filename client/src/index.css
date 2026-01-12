@@ -17,3 +17,146 @@
 body {
   @apply bg-gradient-to-br from-slate-900 via-purple-900/30 to-slate-900 overflow-x-hidden;
 }
+
+
+@media (max-width: 640px) {
+
+  /* Fix overall page side padding */
+  .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Reduce hero top padding */
+  .pt-20 {
+    padding-top: 5rem !important;
+  }
+
+  /* Shrink main heading */
+  .text-5xl {
+    font-size: 2.3rem !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Shrink sub heading */
+  .text-2xl {
+    font-size: 1.2rem !important;
+  }
+
+  /* Paragraph text */
+  .text-lg {
+    font-size: 0.95rem !important;
+  }
+
+  .text-xl {
+    font-size: 1rem !important;
+  }
+
+  /* Fix hero height (removes huge empty space) */
+  .min-h-\[200vh\] {
+    min-height: auto !important;
+  }
+
+  /* Center hero content properly */
+  .grid {
+    text-align: left !important;
+  }
+
+  /* Shrink profile card container */
+  .w-80 {
+    width: 15rem !important;
+  }
+
+  .h-80 {
+    height: 15rem !important;
+  }
+
+  /* Shrink inner avatar */
+  .w-56 {
+    width: 10rem !important;
+  }
+
+  .h-56 {
+    height: 10rem !important;
+  }
+
+  /* Reduce card padding */
+  .p-6 {
+    padding: 1rem !important;
+  }
+
+  .p-8 {
+    padding: 1.2rem !important;
+  }
+
+  /* Reduce skills section spacing */
+  .mb-20 {
+    margin-bottom: 3rem !important;
+  }
+
+  .mb-16 {
+    margin-bottom: 2.5rem !important;
+  }
+
+  /* Make header bar clean */
+  header {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Fix logo size in header */
+  header h1, 
+  header span {
+    font-size: 1.3rem !important;
+  }
+
+  /* Prevent button overflow */
+  button {
+    padding: 0.75rem 1.4rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+
+@media (max-width: 640px) {
+
+  /* 🔥 Make navbar thinner on mobile */
+  nav .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  nav .py-4 {
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+  }
+
+  /* 🔥 Shrink logo text */
+  nav .text-2xl {
+    font-size: 1.3rem !important;
+  }
+
+  /* 🔥 Shrink mobile menu button */
+  nav button {
+    padding: 0.4rem !important;
+  }
+
+  nav svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* 🔥 Reduce dropdown spacing */
+  nav .mt-4 {
+    margin-top: 0.5rem !important;
+  }
+
+  nav .py-3 {
+    padding-top: 0.6rem !important;
+    padding-bottom: 0.6rem !important;
+  }
+
+  nav .text-lg {
+    font-size: 1rem !important;
+  }
+}

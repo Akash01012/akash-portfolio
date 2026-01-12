@@ -1,0 +1,33 @@
+[{
+  "_id":"69537fcd65f740b5a2055959",
+  "name": "Spam Detection REST API",
+  "description": "A production-ready backend API built with Django REST Framework and JWT authentication that allows users to identify spam phone numbers, mark numbers as spam, and search caller details with privacy-aware rules. Uses PostgreSQL and is deployed on cloud infrastructure.",
+  "endpoint": "https://spam-detection-api-tk0g.onrender.com/api/",
+  "methods": [
+    "GET",
+    "POST"
+  ],
+  "githubUrl": "https://github.com/Akash01012/spam-detection"
+},
+{
+  "_id":"6953b91a65f740b5a2055974",
+  "name": "CookieLens – Cookie Analysis Extension",
+  "description": "A privacy-first browser extension that analyzes cookie usage and consent behavior on visited websites. CookieLens inspects cookies locally within the browser to help users understand how websites manage cookies and consent mechanisms, without collecting browsing data or transmitting information to external servers.",
+  "endpoint": "https://microsoftedge.microsoft.com/addons/detail/hgiiplkaeagnmaihpljeikbklepeiblk",
+  "methods": [
+    "Local Cookie Inspection",
+    "Consent Behavior Analysis"
+  ],
+  "githubUrl": "https://github.com/Akash01012/cookielens"
+},
+{
+  "_id": "6953b92e65f740b5a2055976",
+  "name": "VidGrab – Video Detection Extension",
+  "description": "A privacy-focused browser extension that detects publicly available video files and streaming playlists (including HLS/M3U8) directly from web pages. All analysis is performed locally in the user’s browser and only when explicitly triggered by the user. VidGrab does not collect, store, or transmit any personal data and does not rely on analytics, tracking, or third-party services.",
+  "endpoint": "https://microsoftedge.microsoft.com/addons/detail/vidgrab/ieoblidhnmkneiineihdcknnbcfakmao",
+  "methods": [
+    "Local Video Detection",
+    "User-Initiated Download"
+  ],
+  "githubUrl": "https://github.com/Akash01012/vidgrab"
+}]

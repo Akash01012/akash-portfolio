@@ -3,19 +3,42 @@ import axios from 'axios';
 import { Briefcase, Calendar, MapPin, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { Experience as ExperienceType } from '../types';
+import fallbackExperience from "../data/experiences.json";
+
 
 const Experience = () => {
   const [experiences, setExperiences] = useState<ExperienceType[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/api/experience`)
-      .then(res => {
-        setExperiences(res.data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+  // useEffect(() => {
+  //   axios.get(`${import.meta.env.VITE_API_URL}/api/experience`)
+  //     .then(res => {
+  //       setExperiences(res.data);
+  //       setLoading(false);
+  //     })
+  //     .catch(() => setLoading(false));
+  // }, []);
+useEffect(() => {
+  const fetchExperience = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/experience`,
+        { timeout: 3000 }
+      );
+
+      setExperiences(res.data || fallbackExperience);
+    } 
+    catch (error) {
+      console.log("Experience API failed, loading local JSON fallback");
+      setExperiences(fallbackExperience);
+    } 
+    finally {
+      setLoading(false);
+    }
+  };
+
+  fetchExperience();
+}, []);
 
   if (loading) {
     return (

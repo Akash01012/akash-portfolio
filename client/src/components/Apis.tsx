@@ -2,21 +2,39 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Server, Github, Copy, Play, ExternalLink } from "lucide-react";
 import type { Api as ApiType } from "../types";
+import fallbackApis from "../data/apis.json";
 
 const Apis = () => {
   const [apis, setApis] = useState<ApiType[]>([]);
   const [loading, setLoading] = useState(true);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/apis`)
-      .then((res) => {
-        setApis(res.data || []);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_API_URL}/api/apis`)
+  //     .then((res) => {
+  //       setApis(res.data || []);
+  //       setLoading(false);
+  //     })
+  //     .catch(() => setLoading(false));
+  // }, []);
+useEffect(() => {
+  const fetchApis = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/apis`, {
+        timeout: 3000 // optional: fail fast if server sleeping
+      });
+      setApis(res.data || fallbackApis);
+    } catch (error) {
+      console.log("API failed, loading local JSON fallback");
+      setApis(fallbackApis);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchApis();
+}, []);
 
   const [copiedEndpoint, setCopiedEndpoint] = useState<string | null>(null);
 

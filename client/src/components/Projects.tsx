@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ExternalLink, Github, Play, Code } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
+import fallbackProjects from "../data/projects.json";
 interface Project {
   _id: string;
   title: string;
   description: string;
-  category: 'fullstack' | 'ai' | 'api';
+  category: string;
   techStack: string[];
   liveUrl?: string;
   githubUrl?: string;
@@ -21,15 +21,32 @@ const ProjectsGrid = ({ category }: { category?: string }) => {
   // 🔹 Added for Read More functionality
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
 
+  // useEffect(() => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_API_URL}/api/projects${category ? `?category=${category}` : ''}`)
+  //     .then(res => {
+  //       setProjects(res.data);
+  //       setLoading(false);
+  //     })
+  //     .catch(() => setLoading(false));
+  // }, [category]);
+
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/projects${category ? `?category=${category}` : ''}`)
-      .then(res => {
-        setProjects(res.data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, [category]);
+  axios
+    .get(
+      `${import.meta.env.VITE_API_URL}/api/projects${category ? `?category=${category}` : ''}`,
+      { timeout: 3000 }
+    )
+    .then(res => {
+      setProjects(res.data || fallbackProjects);
+      setLoading(false);
+    })
+    .catch(() => {
+      console.log("Projects API failed, loading local JSON fallback");
+      setProjects(fallbackProjects);
+      setLoading(false);
+    });
+}, [category]);
 
   if (loading) {
     return (

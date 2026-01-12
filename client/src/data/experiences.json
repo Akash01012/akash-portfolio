@@ -1,0 +1,55 @@
+[{
+  "_id": "69410a2347720e83a4b693f5",
+  "company": "Shoptainment",
+  "role": "Software Development Engineer",
+  "duration": "Jan 2025 - August 2025",
+  "location": "Remote",
+  "description": [
+    "Developed a Django-based product search API leveraging deep learning models to support catalog and global search across multiple e-commerce platforms, enhancing product discovery and shopping convenience",
+    "Designed the interface for a Shoppable Video Platform with interactive product tagging to seamlessly connect entertainment with e-commerce"
+  ],
+  "technologies": [
+    "Python",
+    "Django",
+    "React.js & Node.js",
+    "API Development",
+    "Deep Learning"
+  ]
+},
+{
+  "_id": "69410a7e47720e83a4b693f7",
+  "company": "Jivass Technologies",
+  "role": "Software Engineer",
+  "duration": "Jul 2024 - Nov 2024",
+  "location": "Chennai",
+  "description": [
+    "Implemented protocol for tracking wagons leveraging LoRa, RF, and IR inside and outside the yard, increasing communication efficiency and reducing delays by 20%",
+    "Automated image analysis for industrial inspection using deep learning, reducing inspection preparation time by 30%"
+  ],
+  "technologies": [
+    "Python",
+    "LoRa",
+    "React.js",
+    "IoT",
+    "Industrial Automation"
+  ]
+},
+{
+  "_id":"69410a8747720e83a4b693f9",
+  "company": "All India Marketing HR Solutions",
+  "role": "Fullstack Developer Intern",
+  "duration": "Jun 2023 - Aug 2023",
+  "location": "Delhi",
+  "description": [
+    "Contributed to the development of scalable web applications using modern technologies like React.js, Dart, Firebase",
+    "Collaborated with cross-functional teams to design, develop, and deploy end-to-end solutions",
+    "Implemented features to enhance user experience and optimized backend processes for improved performance"
+  ],
+  "technologies": [
+    "React.js",
+    "Node.js",
+    "Javascript",
+    "MongoDB",
+    "Fullstack"
+  ]
+}]

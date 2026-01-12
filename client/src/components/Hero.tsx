@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import type { Experience as ExperienceType } from '../types';
+import fallbackApis from "../data/apis.json";
+import fallbackExperience from "../data/experiences.json";
+import fallbackProjects from "../data/projects.json";
+import '../index.css'
 
 type Project = {
   _id: string;
   title: string;
   description: string;
-  category: 'fullstack' | 'ai' | 'api';
+  category: string;
   techStack: string[];
   liveUrl?: string;
   githubUrl?: string;
@@ -35,44 +39,101 @@ const Hero = () => {
   const [projLoading, setProjLoading] = useState(true);
 
   // Experience fetch (unchanged)
+  // useEffect(() => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_API_URL}/api/experience`)
+  //     .then((res) => {
+  //       setExperiences(res.data);
+  //       setLoading(false);
+  //     })
+  //     .catch(() => setLoading(false));
+  // }, []);
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/experience`)
-      .then((res) => {
-        setExperiences(res.data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, []);
+  axios
+    .get(`${import.meta.env.VITE_API_URL}/api/experience`, { timeout: 3000 })
+    .then((res) => {
+      setExperiences(res.data || fallbackExperience);
+      setLoading(false);
+    })
+    .catch(() => {
+      
+      setExperiences(fallbackExperience);
+      setLoading(false);
+    });
+}, []);
 
   // 🔹 PROJECTS: First 2 from /api/projects
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/projects`)
-      .then((res) => {
-        const allProjects: Project[] = res.data || [];
-        setProjects(allProjects.slice(0, 2));
-      })
-      .catch(() => {});
-  }, []);
+  axios
+    .get(`${import.meta.env.VITE_API_URL}/api/projects`, { timeout: 3000 })
+    .then((res) => {
+      const allProjects: Project[] = res.data || fallbackProjects;
+      setProjects(allProjects.slice(0, 2));
+    })
+    .catch(() => {
+      const allProjects: Project[] = fallbackProjects;
+      setProjects(allProjects.slice(0, 2));
+    });
+}, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_API_URL}/api/projects`)
+  //     .then((res) => {
+  //       const allProjects: Project[] = res.data || [];
+  //       setProjects(allProjects.slice(0, 2));
+  //     })
+  //     .catch(() => {});
+  // }, []);
 
   // 🔹 APIS: First 2 from /api/apis (FIXED: map backend data to match JSX)
-  useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/apis`)
-      .then((res) => {
-        const rawApis = res.data || [];
-        const allApis: ApiType[] = rawApis.map((api: any) => ({
-          ...api,
-          title: api.name,           // backend sends 'name', JSX expects 'title'
-          techStack: api.techStack || []  // provide empty array for slice()
-        }));
-        setApis(allApis.slice(0, 2));
-        setProjLoading(false);
-      })
-      .catch(() => setProjLoading(false));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${import.meta.env.VITE_API_URL}/api/apis`)
+  //     .then((res) => {
+  //       const rawApis = res.data || [];
+  //       const allApis: ApiType[] = rawApis.map((api: any) => ({
+  //         ...api,
+  //         title: api.name,           // backend sends 'name', JSX expects 'title'
+  //         techStack: api.techStack || []  // provide empty array for slice()
+  //       }));
+  //       setApis(allApis.slice(0, 2));
+  //       setProjLoading(false);
+  //     })
+  //     .catch(() => setProjLoading(false));
+  // }, []);
+useEffect(() => {
+  const fetchApis = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/apis`, {
+        timeout: 3000
+      });
 
+      const rawApis = res.data || [];
+      const allApis: ApiType[] = rawApis.map((api: any) => ({
+        ...api,
+        _id: typeof api._id === "object" ? api._id.$oid : api._id, // safety
+        title: api.name,
+        techStack: api.techStack || []
+      }));
+
+      setApis(allApis.slice(0, 2));
+    } 
+    catch (error) {
+      const allApis: ApiType[] = fallbackApis.map((api: any) => ({
+        ...api,
+        title: api.name,
+        techStack: api.techStack || []
+      }));
+
+      setApis(allApis.slice(0, 2));
+    } 
+    finally {
+      setProjLoading(false);
+    }
+  };
+
+  fetchApis();
+}, []);
   const skills = [
     { category: 'Languages', items: ['C/C++', 'Python', 'Java', 'JavaScript', 'Matlab'] },
     { category: 'Frameworks', items: ['ReactJS', 'NodeJS', 'ExpressJS', 'Django', 'TensorFlow'] },

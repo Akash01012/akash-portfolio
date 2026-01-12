@@ -1,0 +1,96 @@
+[{
+  "_id":"6953994e65f740b5a2055964",
+  "title": "Discord Bot",
+  "category": "fullstack",
+  "description": "A smart Discord utility bot designed to assist individuals and groups in making decisions efficiently. The bot analyzes user input and provides automated responses for greetings, decision prompts, option elimination, and random selection logic. It includes intent detection, keyword-based scoring, and controlled response behavior to avoid spam or duplicate replies. The bot is designed for real-world Discord server usage, allowing users to join a public server and interact instantly without any setup. It is built with scalability and deployment readiness in mind and it is hosted on platforms like Render check it on website",
+  "techStack": [
+    "Node.js",
+    "Discord.js",
+    "JavaScript",
+    "Intent Detection Logic",
+    "Bot Automation"
+  ],
+  "liveUrl": "https://discord.gg/7B3cgbACfA",
+  "githubUrl": "https://github.com/Akash01012/discord-bot",
+  "featured": true,
+  "image": "https://res.cloudinary.com/di6amau7k/image/upload/v1767085832/discord-bot-banner_bpq0l5.png",
+  "order": 1
+},
+{
+  "_id":"6953994e65f740b5a2055965",
+  "title": "RailYard Protocol Simulation",
+  "category": "backend",
+  "description": "A distributed railway communication protocol simulation that enables a train engine to accurately identify, verify, and track all connected wagons in sequence. The system leverages IR-based short-range communication to confirm immediate wagon connectivity and LoRa-style long-range messaging to communicate across the entire train. Through controlled message propagation and acknowledgements, the engine gathers each wagon’s unique ID, detects the guard van to terminate the process safely, and compiles an ordered list of attached wagons. The final train configuration is transmitted to the control room, ensuring precise, reliable, and fault-tolerant tracking of train composition. The simulation is deployed with real-time execution logs via Streamlit for live protocol visualization.",
+  "techStack": [
+    "Python",
+    "React",
+    "Streamlit",
+    "Communication Protocols",
+    "Object-Oriented Design"
+  ],
+  "liveUrl": "https://railyardmanagement-cli-api.streamlit.app",
+  "githubUrl": "None",
+  "featured": true,
+  "image": "https://res.cloudinary.com/di6amau7k/image/upload/v1765878501/Railyard_image_pk0tt1.png",
+  "order": 2
+},
+{
+  "_id": "69539dc365f740b5a205596d",
+  "title": "Dr-Helpy",
+  "category": "fullstack",
+  "description": "Dr-Helpy is a MERN-based medical store web application that enables users to purchase medical products online, receive basic cure and medicine recommendations, and complete secure payments through integrated online payment gateways. The platform supports product image uploads, order management, and RESTful APIs to ensure a smooth and scalable healthcare-focused e-commerce experience.",
+  "techStack": [
+    "React",
+    "Redux",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Stripe",
+    "Multer",
+    "Cloudinary",
+    "REST API"
+  ],
+  "liveUrl": "https://dr-helpy.vercel.app",
+  "githubUrl": "https://github.com/Akash01012/Dr-Helpy",
+  "featured": false,
+  "image": "https://res.cloudinary.com/di6amau7k/image/upload/v1765879717/undraw_medicine_b1ol_mjhhih.png"
+},
+{
+  "_id": "69539f5865f740b5a205596f",
+  "title": "Secure Drive – Cloud File Sharing",
+  "category": "fullstack",
+  "description": "A secure cloud-based file storage and sharing backend inspired by Google Drive workflows. The system allows users to upload files into logical folders identified by email and folder name, ensuring deduplication and controlled access. It supports one-time download links, automatic file expiration using TTL indexes, download tracking, and secure deletion. Files are stored using Cloudinary instead of local disk storage, making the system production-ready and scalable. The backend is designed as a real-world API service intended for integration with a modern React frontend.",
+  "techStack": [
+    "React.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "Cloudinary",
+    "REST API Design"
+  ],
+  "liveUrl": "https://secure-drive-beryl.vercel.app/",
+  "githubUrl": "https://github.com/Akash01012/secure-drive-backend",
+  "featured": true,
+  "image": "https://res.cloudinary.com/di6amau7k/image/upload/v1766053717/Secure_drive_sfyz7a.png"
+},
+{
+  "_id": "6953b65e65f740b5a2055971",
+  "title": "Code Notes",
+  "category": "fullstack",
+  "description": "Code Notes is a full-stack notes management application designed for developers to quickly write, edit, tag, and organize notes. The app supports real-time CRUD operations, tag-based organization, instant UI updates without page reloads, and clean separation between frontend and backend. It is built with a custom Webpack React frontend and a Node.js + Express backend connected to MongoDB, and deployed using Vercel and Render for production.",
+  "techStack": [
+    "React",
+    "JavaScript",
+    "Webpack",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Mongoose",
+    "REST API"
+  ],
+  "liveUrl": "https://code-notes-orcin.vercel.app/",
+  "githubUrl": "https://github.com/Akash01012/code-notes",
+  "featured": false,
+  "image": "https://res.cloudinary.com/di6amau7k/image/upload/v1765950275/NotesProjectImage_lrkvjj.png"
+}]
