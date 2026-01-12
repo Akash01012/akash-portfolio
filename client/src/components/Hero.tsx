@@ -181,6 +181,7 @@ const Hero = () => {
 
           <a
             href="/AkashKumar_Resume.pdf"
+            download="AkashKumar_Resume.pdf"
             className="
                         inline-flex items-center gap-3
                         /* Desktop size */
