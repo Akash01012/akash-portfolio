@@ -120,7 +120,7 @@ body {
 
 @media (max-width: 640px) {
 
-  /* 🔥 Make navbar thinner on mobile */
+  /*  Make navbar thinner on mobile */
   nav .px-6 {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
@@ -131,12 +131,12 @@ body {
     padding-bottom: 0.6rem !important;
   }
 
-  /* 🔥 Shrink logo text */
+  /* Shrink logo text */
   nav .text-2xl {
     font-size: 1.3rem !important;
   }
 
-  /* 🔥 Shrink mobile menu button */
+  /* Shrink mobile menu button */
   nav button {
     padding: 0.4rem !important;
   }
@@ -146,7 +146,7 @@ body {
     height: 20px !important;
   }
 
-  /* 🔥 Reduce dropdown spacing */
+  /*  Reduce dropdown spacing */
   nav .mt-4 {
     margin-top: 0.5rem !important;
   }

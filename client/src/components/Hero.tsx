@@ -1,12 +1,21 @@
-import { ArrowRight, Code, Server, Calendar, ExternalLink, MapPin, Briefcase } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import type { Experience as ExperienceType } from '../types';
+import {
+  ArrowRight,
+  Code,
+  Server,
+  Calendar,
+  ExternalLink,
+  MapPin,
+  Briefcase,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { FileDown } from "lucide-react";
+import type { Experience as ExperienceType } from "../types";
 import fallbackApis from "../data/apis.json";
 import fallbackExperience from "../data/experiences.json";
 import fallbackProjects from "../data/projects.json";
-import '../index.css'
+import "../index.css";
 
 type Project = {
   _id: string;
@@ -22,12 +31,12 @@ type Project = {
 type ApiType = {
   _id: string;
   name: string;
-  title: string;        // mapped from name
+  title: string; // mapped from name
   description?: string;
   endpoint?: string;
   methods?: string[];
   githubUrl?: string;
-  techStack: string[];  // default empty array
+  techStack: string[]; // default empty array
 };
 
 const Hero = () => {
@@ -49,32 +58,31 @@ const Hero = () => {
   //     .catch(() => setLoading(false));
   // }, []);
   useEffect(() => {
-  axios
-    .get(`${import.meta.env.VITE_API_URL}/api/experience`, { timeout: 3000 })
-    .then((res) => {
-      setExperiences(res.data || fallbackExperience);
-      setLoading(false);
-    })
-    .catch(() => {
-      
-      setExperiences(fallbackExperience);
-      setLoading(false);
-    });
-}, []);
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/experience`, { timeout: 3000 })
+      .then((res) => {
+        setExperiences(res.data || fallbackExperience);
+        setLoading(false);
+      })
+      .catch(() => {
+        setExperiences(fallbackExperience);
+        setLoading(false);
+      });
+  }, []);
 
   // 🔹 PROJECTS: First 2 from /api/projects
   useEffect(() => {
-  axios
-    .get(`${import.meta.env.VITE_API_URL}/api/projects`, { timeout: 3000 })
-    .then((res) => {
-      const allProjects: Project[] = res.data || fallbackProjects;
-      setProjects(allProjects.slice(0, 2));
-    })
-    .catch(() => {
-      const allProjects: Project[] = fallbackProjects;
-      setProjects(allProjects.slice(0, 2));
-    });
-}, []);
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/api/projects`, { timeout: 3000 })
+      .then((res) => {
+        const allProjects: Project[] = res.data || fallbackProjects;
+        setProjects(allProjects.slice(0, 2));
+      })
+      .catch(() => {
+        const allProjects: Project[] = fallbackProjects;
+        setProjects(allProjects.slice(0, 2));
+      });
+  }, []);
   // useEffect(() => {
   //   axios
   //     .get(`${import.meta.env.VITE_API_URL}/api/projects`)
@@ -101,47 +109,54 @@ const Hero = () => {
   //     })
   //     .catch(() => setProjLoading(false));
   // }, []);
-useEffect(() => {
-  const fetchApis = async () => {
-    try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/apis`, {
-        timeout: 3000
-      });
+  useEffect(() => {
+    const fetchApis = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/apis`,
+          {
+            timeout: 3000,
+          }
+        );
 
-      const rawApis = res.data || [];
-      const allApis: ApiType[] = rawApis.map((api: any) => ({
-        ...api,
-        _id: typeof api._id === "object" ? api._id.$oid : api._id, // safety
-        title: api.name,
-        techStack: api.techStack || []
-      }));
+        const rawApis = res.data || [];
+        const allApis: ApiType[] = rawApis.map((api: any) => ({
+          ...api,
+          _id: typeof api._id === "object" ? api._id.$oid : api._id, // safety
+          title: api.name,
+          techStack: api.techStack || [],
+        }));
 
-      setApis(allApis.slice(0, 2));
-    } 
-    catch (error) {
-      const allApis: ApiType[] = fallbackApis.map((api: any) => ({
-        ...api,
-        title: api.name,
-        techStack: api.techStack || []
-      }));
+        setApis(allApis.slice(0, 2));
+      } catch (error) {
+        const allApis: ApiType[] = fallbackApis.map((api: any) => ({
+          ...api,
+          title: api.name,
+          techStack: api.techStack || [],
+        }));
 
-      setApis(allApis.slice(0, 2));
-    } 
-    finally {
-      setProjLoading(false);
-    }
-  };
+        setApis(allApis.slice(0, 2));
+      } finally {
+        setProjLoading(false);
+      }
+    };
 
-  fetchApis();
-}, []);
+    fetchApis();
+  }, []);
   const skills = [
-    { category: 'Languages', items: ['C/C++', 'Python', 'Java', 'JavaScript', 'Matlab'] },
-    { category: 'Frameworks', items: ['ReactJS', 'NodeJS', 'ExpressJS', 'Django', 'TensorFlow'] },
-    { category: 'Databases', items: ['MongoDB', 'MySQL', 'PostgreSQL'] },
-    { category: 'Tools', items: ['Docker', 'AWS', 'Git/GitHub'] },
+    {
+      category: "Languages",
+      items: ["C/C++", "Python", "Java", "JavaScript", "Matlab"],
+    },
+    {
+      category: "Frameworks",
+      items: ["ReactJS", "NodeJS", "ExpressJS", "Django", "TensorFlow"],
+    },
+    { category: "Databases", items: ["MongoDB", "MySQL", "PostgreSQL"] },
+    { category: "Tools", items: ["Docker", "AWS", "Git/GitHub"] },
   ];
 
-  const PROFILE_IMAGE_URL = '/images/Professional_image.jpg';
+  const PROFILE_IMAGE_URL = "/images/Professional_image.jpg";
 
   return (
     <section className="min-h-[200vh] flex flex-col px-6 md:px-10 lg:px-20 pt-20 pb-20 bg-gradient-to-b from-slate-950 via-blue-950/50 to-slate-950">
@@ -160,11 +175,36 @@ useEffect(() => {
           </h1>
 
           <p className="text-lg md:text-xl text-slate-300 max-w-lg leading-relaxed animate-slide-up delay-300">
-            Building high-performance React/Node apps, production APIs, and AI systems for apparel detection &amp; document intelligence.
+            Building high-performance React/Node apps, production APIs, and AI
+            systems for apparel detection &amp; document intelligence.
           </p>
 
+          <a
+            href="/AkashKumar_Resume.pdf"
+            className="
+                        inline-flex items-center gap-3
+                        /* Desktop size */
+                        px-7 py-3 text-base
+                        /* Mobile size */
+                        sm:px-6 sm:py-2.5 sm:text-sm
+                        rounded-full
+                        bg-gradient-to-r from-slate-900/80 via-slate-800/80 to-slate-900/80
+                        backdrop-blur-xl
+                        border border-blue-400/70
+                        text-blue-300 font-semibold
+                        shadow-[0_0_18px_rgba(59,130,246,0.35)]
+                        transition-all duration-300
+                        active:scale-95
+                      ">
+            <FileDown className="w-4 h-4 sm:w-4 sm:h-4" />
+            Download Resume
+          </a>
+
           <div className="flex flex-wrap gap-4 animate-slide-up delay-400">
-            <Link to="/projects" className="hover:scale-105 transition-all duration-300">
+            <Link
+              to="/projects"
+              className="hover:scale-105 transition-all duration-300"
+            >
               <button className="inline-flex items-center gap-3 px-8 py-4 rounded-3xl bg-blue-500 text-slate-900 font-bold text-base shadow-2xl shadow-blue-500/30 hover:bg-blue-400 hover:shadow-blue-500/50 transition-all duration-300 active:scale-95">
                 <Code size={20} />
                 View Projects
@@ -205,7 +245,9 @@ useEffect(() => {
               </div>
 
               <div className="mt-5 text-center">
-                <h3 className="text-lg font-semibold text-white tracking-wide">Akash Kumar</h3>
+                <h3 className="text-lg font-semibold text-white tracking-wide">
+                  Akash Kumar
+                </h3>
                 <p className="text-sm text-slate-400">Software Engineer</p>
               </div>
 
@@ -239,7 +281,9 @@ useEffect(() => {
                     className="group-hover:[&>*]:opacity-100 opacity-70 flex items-center gap-3 p-3 bg-slate-800/50 rounded-xl hover:bg-blue-500/10 hover:opacity-100 transition-all duration-200"
                   >
                     <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full scale-0 group-hover:scale-100 transition-transform duration-200" />
-                    <span className="text-sm font-medium text-slate-300">{skill}</span>
+                    <span className="text-sm font-medium text-slate-300">
+                      {skill}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -253,7 +297,10 @@ useEffect(() => {
         {loading ? (
           <div className="space-y-6 animate-pulse">
             {[...Array(2)].map((_, i) => (
-              <div key={i} className="bg-slate-900/70 backdrop-blur-md border border-slate-700/50 rounded-3xl p-8">
+              <div
+                key={i}
+                className="bg-slate-900/70 backdrop-blur-md border border-slate-700/50 rounded-3xl p-8"
+              >
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 bg-slate-800/50 rounded-2xl" />
                   <div>
@@ -285,19 +332,29 @@ useEffect(() => {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className="text-xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors">
-                      {exp.company || 'Company'}
+                      {exp.company || "Company"}
                     </h3>
-                    <MapPin size={16} className="text-slate-500 flex-shrink-0" />
-                    <span className="text-sm text-slate-400">{exp.location || 'Remote'}</span>
+                    <MapPin
+                      size={16}
+                      className="text-slate-500 flex-shrink-0"
+                    />
+                    <span className="text-sm text-slate-400">
+                      {exp.location || "Remote"}
+                    </span>
                   </div>
-                  <p className="text-slate-300 font-semibold text-lg mb-3">{exp.role || 'Role'}</p>
+                  <p className="text-slate-300 font-semibold text-lg mb-3">
+                    {exp.role || "Role"}
+                  </p>
                   <div className="flex items-center gap-4 text-slate-400 mb-6 text-sm">
                     <Calendar size={18} />
-                    <span>{exp.duration || 'Duration'}</span>
+                    <span>{exp.duration || "Duration"}</span>
                   </div>
                   <ul className="space-y-2 mb-6">
                     {(exp.description || []).slice(0, 2).map((desc, i) => (
-                      <li key={i} className="flex items-start gap-3 text-slate-300">
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-slate-300"
+                      >
                         <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0 animate-pulse" />
                         <span className="leading-relaxed">{desc}</span>
                       </li>
@@ -322,7 +379,10 @@ useEffect(() => {
                 className="inline-flex items-center gap-2 px-8 py-4 bg-blue-500/90 text-slate-900 font-bold text-base rounded-3xl shadow-2xl shadow-blue-500/30 hover:bg-blue-400 hover:shadow-blue-500/50 transition-all duration-300 group"
               >
                 View Full Timeline
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight
+                  size={20}
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
               </Link>
             </div>
           </>
@@ -362,11 +422,7 @@ useEffect(() => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {projects.map((project) => (
-                <Link
-                  key={project._id}
-                  to="/projects"
-                  className="group"
-                >
+                <Link key={project._id} to="/projects" className="group">
                   <div className="relative flex md:flex-row flex-col gap-5 bg-slate-900/90 backdrop-blur-md border border-slate-700/60 rounded-3xl p-6 h-full hover:bg-slate-900 hover:border-blue-500/60 hover:shadow-2xl hover:shadow-blue-500/30 hover:-translate-y-3 transition-all duration-500 overflow-hidden">
                     {/* Image */}
                     <div className="relative w-full md:w-40 h-32 rounded-2xl overflow-hidden bg-slate-800/60 flex-shrink-0">
@@ -386,7 +442,9 @@ useEffect(() => {
                         <div className="flex items-center gap-2 mb-1">
                           <Code className="w-4 h-4 text-blue-400" />
                           <span className="text-xs uppercase tracking-wide text-slate-400">
-                            {project.category === 'ai' ? 'AI System' : 'Full-Stack App'}
+                            {project.category === "ai"
+                              ? "AI System"
+                              : "Full-Stack App"}
                           </span>
                         </div>
                         <h4 className="text-xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors mb-1">
@@ -450,11 +508,7 @@ useEffect(() => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {apis.map((api) => (
-                <Link
-                  key={api._id}
-                  to="/apis"
-                  className="group"
-                >
+                <Link key={api._id} to="/apis" className="group">
                   <div className="relative flex flex-col gap-4 bg-slate-900/90 backdrop-blur-md border border-slate-700/60 rounded-3xl p-6 h-full hover:bg-slate-900 hover:border-blue-500/60 hover:shadow-2xl hover:shadow-blue-500/30 hover:-translate-y-3 transition-all duration-500 overflow-hidden">
                     <div className="flex items-center gap-3">
                       <div className="p-3 rounded-2xl bg-blue-500/15 border border-blue-500/40">
